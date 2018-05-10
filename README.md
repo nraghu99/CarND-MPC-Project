@@ -110,12 +110,13 @@ A well written README file can enhance your project and portfolio.  Develop your
 ## Reflection
 [UnweghitedMpcRun](https://www.youtube.com/watch?v=-NTwll8s4rE)
 I am using the MPC Controller
-main.cpp
 
-First I am collecting data from the simulator
-The simulator feeds the following data
-ptsx (x-position of waypoints in map coordinates)
-ptsy (y-position of waypoints in map coordinates)
-px (x pos of car in map coordinates)
-py (y pos of car in map coordinates)
+* main.cpp
+
+* First I am collecting data from the simulator
+* The simulator feeds the following data
+   1. ptsx (x-position of waypoints in map coordinates)
+   2. ptsy (y-position of waypoints in map coordinates)
+   3. px (x pos of car in map coordinates)
+   4. py (y pos of car in map coordinates)
 

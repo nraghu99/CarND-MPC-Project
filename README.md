@@ -119,4 +119,24 @@ I am using the MPC Controller
    2. ptsy (y-position of waypoints in map coordinates)
    3. px (x pos of car in map coordinates)
    4. py (y pos of car in map coordinates)
+   5. psi (current orientation that can be used in equations)
+   6. v (velocity)
+   7. delta (current steering angle)
+   8 a (throttle)
+   
+ * I convert the ptsx and ptsy to eigen vectors to be used in polyfit and polyeval
+ * Convert the ptsx and ptsy to car's coordinates from the map coordinates
+     1. ptsx_car[i] = x * cos(-psi) - y * sin(-psi);
+     2. ptsy_car[i] = x * sin(-psi) + y * cos(-psi);
+     
+ * I am the using a second order polynomial equation to predict the path
+ * The cte is then calculated using polyeval (note that x and y used are 0 as car is at 0,0)
+ * epsi is also calculated as epi - arctan(coeffs[1]) as epi is 0 for vehicle 's correct orientation
+ * Next I am accounting for the latency, this is simply achieved by sliding the car's state to what it will be
+ in 0.1 seconds as that is the time when the actuator input will take effect
+ * I am using the same equations used in MPC
+ 
+ MPC.cpp
+ 
+ 
 

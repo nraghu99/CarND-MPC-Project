@@ -106,3 +106,16 @@ still be compilable with cmake and make./
 
 ## How to write a README
 A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+
+## Reflection
+[UnweghitedMpcRun](https://www.youtube.com/watch?v=-NTwll8s4rE)
+I am using the MPC Controller
+main.cpp
+
+First I am collecting data from the simulator
+The simulator feeds the following data
+ptsx (x-position of waypoints in map coordinates)
+ptsy (y-position of waypoints in map coordinates)
+px (x pos of car in map coordinates)
+py (y pos of car in map coordinates)
+

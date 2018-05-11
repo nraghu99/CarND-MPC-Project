@@ -6,6 +6,10 @@
 using CppAD::AD;
 
 // TODO: Set the timestep length and duration
+// Chose 10, I chose 25 and it did make a much improvement in performance
+// and less than 10 seemed too little for prediction of accurate path
+// .1 seconds gives better precision and anything more will be impacted by sensornoise
+// and operational noise
 size_t N = 10;
 double dt = 0.1;
 
@@ -52,6 +56,9 @@ class FG_eval {
       // Weights for how "important" each cost is - can be tuned
       // for e.g. cte and epsi are more important than velocity differential a 1 mile vlocity differential
       // is not as significant as a .1 meter cte differential
+      // when I did not have the weiths, the car went off track at the first sharp turn
+      // which indicated that CTE was not having its intended impact on the actuators
+      // so I played with weiths of 100, 500 and 1000 before I came up with 2000
       const int cte_cost_weight = 2000;
       const int epsi_cost_weight = 2000;
      

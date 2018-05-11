@@ -137,6 +137,14 @@ int main() {
             
             // Predict state after latency
             // x, y and psi are all zero after transformation above
+            // Recall the equations for the model:
+            // x_[t+1] = x[t] + v[t] * cos(psi[t]) * dt
+            // y_[t+1] = y[t] + v[t] * sin(psi[t]) * dt
+            // psi_[t+1] = psi[t] + v[t] / Lf * delta[t] * dt
+            // v_[t+1] = v[t] + a[t] * dt
+            // cte[t+1] = f(x[t]) - y[t] + v[t] * sin(epsi[t]) * dt
+            // epsi[t+1] = psi[t] - psides[t] + v[t] * delta[t] / Lf * dt
+            
             double pred_px = x + v * dt; // Since psi is zero, cos(0) = 1, can leave out
             const double pred_py = y; // Since sin(0) = 0, y stays as 0 (y + v * 0 * dt)
             double pred_psi = 0.0 + v * -delta / Lf * dt; // we use negative as per tutorial
@@ -194,7 +202,7 @@ int main() {
           // the points in the simulator are connected by a Yellow line
             
             double poly_inc = 2.5;
-            int num_points = 25;
+            int num_points = 20;
             
             for (int i = 1; i < num_points; i++) {
                 next_x_vals.push_back(poly_inc * i);

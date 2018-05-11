@@ -151,13 +151,23 @@ I am using the MPC Controller
  [UnweghitedMpcRun](https://www.youtube.com/watch?v=-NTwll8s4rE)
  
  I then add error factors for minimizing the use of actuators, i.e. avoid large left and right compensators , and also
- also add error factors to keep the rate of change of actuators to a minimum i.e. smoother turns and accelerations
+ also add error factors to keep the rate of change of actuators to a minimum i.e. smoother turns and accelerations.
+ 
+ I am using a second order polynomial to calculate the co efficients
  
  * Solve Method()
  
+ The state is set to 0
+ Lower and upper bounds are set for steering, throttle etc
+ Then we call solve
+ 
+ Once the actuator values and waypoints are calculated, we add them back to the 
+ solution and it is returned to main for inout to the controller and to paint 
+ on the simulator
  
  
- I am using a second order polynomial to calculate the co efficients
+ 
+ 
  
  
  

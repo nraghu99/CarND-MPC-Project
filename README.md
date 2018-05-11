@@ -138,6 +138,8 @@ I am using the MPC Controller
  
  MPC.cpp
  
+ 
+ * Operator() method
  I chose a interval of 0.1 which seems appropriate given speeds of max 100 miles/h as making it
  larger would lead to imprecise data. So N * dt of 1 second seems very reasonable and making N larger did not
  add any additional precision to the path, so after playing with N = 25 , I finally setlled down on N = 10
@@ -147,6 +149,15 @@ I am using the MPC Controller
  This is because without this, i.e. when all factors have the same cost, during sharp turns, the path prediction if off track, larger CTE errors ws not seem to be having an impact on the steering wheel, so after setting the relative costs to
 2000, the actuator values are more in line with the cte and psi errors. Here is a run without relative weights
  [UnweghitedMpcRun](https://www.youtube.com/watch?v=-NTwll8s4rE)
+ 
+ I then add error factors for minimizing the use of actuators, i.e. avoid large left and right compensators , and also
+ also add error factors to keep the rate of change of actuators to a minimum i.e. smoother turns and accelerations
+ 
+ * Solve Method()
+ 
+ 
+ 
+ I am using a second order polynomial to calculate the co efficients
  
  
  

@@ -108,7 +108,7 @@ still be compilable with cmake and make./
 A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
 
 ## Reflection
-[UnweghitedMpcRun](https://www.youtube.com/watch?v=-NTwll8s4rE)
+
 I am using the MPC Controller
 
 * main.cpp
@@ -137,6 +137,19 @@ I am using the MPC Controller
  * I am using the same equations used in MPC
  
  MPC.cpp
+ 
+ I chose a interval of 0.1 which seems appropriate given speeds of max 100 miles/h as making it
+ larger would lead to imprecise data. So N * dt of 1 second seems very reasonable and making N larger did not
+ add any additional precision to the path, so after playing with N = 25 , I finally setlled down on N = 10
+ 
+ 
+ Now comes the most interesting part i.e. lines 62 and 63 where I am setting relative weights for cte and psi error
+ This is because without this, i.e. when all factors have the same cost, during sharp turns, the path prediction if off track, larger CTE errors ws not seem to be having an impact on the steering wheel, so after setting the relative costs to
+2000, the actuator values are more in line with the cte and psi errors. Here is a run without relative weights
+ [UnweghitedMpcRun](https://www.youtube.com/watch?v=-NTwll8s4rE)
+ 
+ 
+ 
  
  
 
